@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登錄學生成績</title>
+    <script src="lib/jquery.js"></script>
+	<script src="dist/jquery.validate.js"></script>
+    <script>
+        $().ready(function() {       
+            $("#log_in_grades").validate({
+                rules: {
+                    id:{
+                        required: true,
+                        minlength: 9
+                    },    
+                    name: "required",
+                    date: "required",
+                    Chinese: {
+                        required: true,
+                        max: 100
+                    },
+                    English: {
+                        required: true,
+                        max: 100
+                    },
+                    Math: {
+                        required: true,
+                        max: 100
+                    }
+				},
+                messages: {
+                    id: {
+                        required: "必填",
+                        minlength: "學號不得少於9碼"
+				    },
+                    name:"必填",
+                    date:"必填",
+                    Chinese: {
+                        required: "必填",
+                        max: "成績不得大於100"
+				    },
+                    English: {
+                        required: "必填",
+                        max: "成績不得大於100"
+				    },
+                    Math: {
+                        required: "必填",
+                        max: "成績不得大於100"
+				    }
+                }
+            })
+        });
+    </script>
+    <style>
+        #log_in_grades label.error{
+		    margin-left: 10px;
+            color: red;
+	    }
+        *{
+            margin: 0;
+        }
+        h1{
+            background-color:teal;
+            height: 3rem;
+            text-align: center;
+            color: white;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .content{
+            margin-left: 33%;
+            font-size: 1.2em;
+        }
+        .btn{
+            margin-left: 33%;
+        }
+        .btn1{
+            width: 10rem;
+            height: 3rem;
+            font-size: 1rem;
+            background-color: #EEC900;
+        }
+        .btn2{
+            margin: 3rem;
+            width: 10rem;
+            height: 3rem;
+            font-size: 1rem;
+            background-color: #EEC900;
+        }
+    </style>
+</head>
+<body>
+    <h1>登錄學生成績</h1>
+    <div class="content">
+        <form action="process.php" name="" id="log_in_grades" method="post">
+            學號： <input type="text" name="id" size="20"><br>
+            姓名： <input type="text" name="name" size="20"><br>
+            生理性別 : <input type="radio" name="gender" value="M"  checked>男
+                    <input type="radio" name="gender" value="F">女<br>
+            年級 : <input type="radio" name="grade" value="1"  checked>一年級
+                <input type="radio" name="grade" value="2">二年級
+                <input type="radio" name="grade" value="2">三年級
+                <input type="radio" name="grade" value="4">四年級<br>
+            生日 : <input type="date" name="date">
+                <br>            
+                
+            系別 : <select name="department">
+                    <option value="健康科學院">健康科學院</option>
+                    <option value="醫學檢驗生物技術學系">醫學檢驗生物技術學系</option>
+                    <option value="公共衛生學系">公共衛生學系</option>
+                    <option value="物理治療學系">物理治療學系</option>
+                    <option value="職能治療學系">職能治療學系</option>
+                    <option value="醫學影像暨放射科學系">醫學影像暨放射科學系</option>
+                    <option value="醫務管理暨醫療資訊學系" selected>醫務管理暨醫療資訊學系</option>
+                    <option value="學士後醫學檢驗數據整合判讀學士學位學程">學士後醫學檢驗數據整合判讀學士學位學程</option>
+                    <option value="人工智慧健康產業應用碩士學位學程">人工智慧健康產業應用碩士學位學程</option>
+                </select>
+            <br>請勾選您有興趣參加的社團(可複選):<br>
+            <input type="checkbox" name="club[]" value="書法社" checked>書法社
+            <input type="checkbox" name="club[]" value="橋藝社">橋藝社
+            <input type="checkbox" name="club[]" value="籃球社">籃球社
+            <input type="checkbox" name="club[]" value="電腦社">電腦社
+            <input type="checkbox" name="club[]" value="合唱團">合唱團
+            <br>
+            國文： <input type="text" name="Chinese" size="20"><br>
+            英文： <input type="text" name="English" size="20"><br>
+            數學： <input type="text" name="Math" size="20"><br><br>
+    </div>
+    <div class="btn">
+        <input type="submit" value="開始計算成績" class="btn1">
+        <input type="reset" value="重新填寫資料" class="btn2">
+    </div>
+        </form>
+</body>
+</html>
